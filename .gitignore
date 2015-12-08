@@ -1,0 +1,5 @@
+WebApi/bin/
+packages/
+WebApi.IntegrationTests/bin/
+WebApi.IntegrationTests/obj/
+WebApi/obj/
