@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Data;
 using System.Runtime.Serialization;
-using WebApi.ResourceAccess.Context;
+using WebApiTemplate.ResourceAccess.Context;
 
-namespace WebApi.ResourceAccess.Uow
+namespace WebApiTemplate.ResourceAccess.Uow
 {
     public interface IUnitOfWork : IDisposable
     {

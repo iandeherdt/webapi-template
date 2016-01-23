@@ -6,11 +6,11 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Threading;
-using WebApi.Entities;
-using WebApi.ResourceAccess.Attributes;
-using WebApi.ResourceAccess.Infrastructure;
+using WebApiTemplate.Entities;
+using WebApiTemplate.ResourceAccess.Attributes;
+using WebApiTemplate.ResourceAccess.Infrastructure;
 
-namespace WebApi.ResourceAccess.Context{
+namespace WebApiTemplate.ResourceAccess.Context{
     public class EntityContext : DbContext, IEntityContext<DbContext>
     {
         protected DbContext _context = null;

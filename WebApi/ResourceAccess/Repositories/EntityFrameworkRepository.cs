@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
-using WebApi.Entities;
-using WebApi.ResourceAccess.Context;
-using WebApi.ResourceAccess.Exceptions;
-using WebApi.ResourceAccess.QueryObjects;
-using WebApi.ResourceAccess.Uow;
+using WebApiTemplate.Entities;
+using WebApiTemplate.ResourceAccess.Context;
+using WebApiTemplate.ResourceAccess.Exceptions;
+using WebApiTemplate.ResourceAccess.QueryObjects;
+using WebApiTemplate.ResourceAccess.Uow;
 
-namespace WebApi.ResourceAccess.Repositories
+namespace WebApiTemplate.ResourceAccess.Repositories
 {
     public class EntityFrameworkRepository : IRepository
     {

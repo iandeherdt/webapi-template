@@ -10,12 +10,12 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 using NUnit.Framework;
-using WebApi.ResourceAccess.Context;
-using WebApi.ResourceAccess.Migrations;
-using WebApi.ResourceAccess.Repositories;
-using WebApi.ResourceAccess.Uow;
+using WebApiTemplate.ResourceAccess.Context;
+using WebApiTemplate.ResourceAccess.Migrations;
+using WebApiTemplate.ResourceAccess.Repositories;
+using WebApiTemplate.ResourceAccess.Uow;
 
-namespace WebApi.IntegrationTests
+namespace WebApiTemplate.IntegrationTests
 {
     public abstract class ServiceTest
     {

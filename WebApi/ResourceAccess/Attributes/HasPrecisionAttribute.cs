@@ -1,6 +1,6 @@
 using System;
 
-namespace WebApi.ResourceAccess.Attributes
+namespace WebApiTemplate.ResourceAccess.Attributes
 {
     [AttributeUsage(AttributeTargets.Property, Inherited = false, AllowMultiple = false)]
     public sealed class HasPrecisionAttribute : Attribute

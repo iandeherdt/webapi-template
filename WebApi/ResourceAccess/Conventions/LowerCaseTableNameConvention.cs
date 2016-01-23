@@ -2,7 +2,7 @@ using System.Data.Entity.Core.Metadata.Edm;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
-namespace WebApi.ResourceAccess.Conventions
+namespace WebApiTemplate.ResourceAccess.Conventions
 {
     public class LowerCaseTableNameConvention : IStoreModelConvention<EntitySet>
     {

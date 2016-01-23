@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Practices.Unity;
 
-namespace WebApi
+namespace WebApiTemplate
 {
     public class Container
     {

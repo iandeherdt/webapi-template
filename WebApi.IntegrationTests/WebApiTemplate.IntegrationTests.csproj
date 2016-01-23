@@ -7,8 +7,8 @@
     <ProjectGuid>{D4210E3A-DC8E-465A-9F61-CEE6FFC304B3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebApi.IntegrationTests</RootNamespace>
-    <AssemblyName>WebApi.IntegrationTests</AssemblyName>
+    <RootNamespace>WebApiTemplate.IntegrationTests</RootNamespace>
+    <AssemblyName>WebApiTemplate.IntegrationTests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -88,9 +88,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WebApi\WebApi.csproj">
+    <ProjectReference Include="..\WebApi\WebApiTemplate.csproj">
       <Project>{87b233d3-c54c-428b-bed7-1e151064a117}</Project>
-      <Name>WebApi</Name>
+      <Name>WebApiTemplate</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

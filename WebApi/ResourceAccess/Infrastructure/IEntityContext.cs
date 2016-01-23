@@ -1,4 +1,4 @@
-﻿namespace WebApi.ResourceAccess.Infrastructure
+﻿namespace WebApiTemplate.ResourceAccess.Infrastructure
 {
     public interface IEntityContext
     {
