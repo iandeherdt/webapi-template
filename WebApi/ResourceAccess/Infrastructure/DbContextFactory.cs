@@ -1,6 +1,6 @@
-﻿using WebApi.ResourceAccess.Context;
+﻿using WebApiTemplate.ResourceAccess.Context;
 
-namespace WebApi.ResourceAccess.Infrastructure
+namespace WebApiTemplate.ResourceAccess.Infrastructure
 {
     public interface IDbContextFactory
     {

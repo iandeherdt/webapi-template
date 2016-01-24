@@ -2,7 +2,7 @@ using Microsoft.Practices.Unity;
 using System.Web.Http;
 using Unity.WebApi;
 
-namespace WebApi
+namespace WebApiTemplate
 {
     public static class UnityConfig
     {

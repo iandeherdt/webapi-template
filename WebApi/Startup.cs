@@ -7,9 +7,9 @@ using Microsoft.Practices.Unity;
 using Owin;
 using Unity.WebApi;
 
-[assembly: OwinStartup(typeof(WebApi.Startup))]
+[assembly: OwinStartup(typeof(WebApiTemplate.Startup))]
 
-namespace WebApi
+namespace WebApiTemplate
 {
     public class Startup
     {

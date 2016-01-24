@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Web;
 
-namespace WebApi
+namespace WebApiTemplate
 {
     public interface IRequestState
     {

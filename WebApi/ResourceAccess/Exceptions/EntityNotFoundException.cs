@@ -1,6 +1,6 @@
 using System;
 
-namespace WebApi.ResourceAccess.Exceptions
+namespace WebApiTemplate.ResourceAccess.Exceptions
 {
     public class EntityNotFoundException : Exception
     {

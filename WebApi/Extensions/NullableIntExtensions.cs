@@ -1,4 +1,4 @@
-﻿namespace WebApi.Extensions
+﻿namespace WebApiTemplate.Extensions
 {
     public class NullableIntExtensions
     {

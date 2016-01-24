@@ -1,4 +1,4 @@
-﻿namespace WebApi.IntegrationTests
+﻿namespace WebApiTemplate.IntegrationTests
 {
     public class Token
     {

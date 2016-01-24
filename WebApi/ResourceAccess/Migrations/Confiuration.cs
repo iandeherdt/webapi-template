@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity.Migrations;
-using WebApi.ResourceAccess.Context;
+using WebApiTemplate.ResourceAccess.Context;
 
-namespace WebApi.ResourceAccess.Migrations
+namespace WebApiTemplate.ResourceAccess.Migrations
 {
     public class Configuration : DbMigrationsConfiguration<EntityContext>
     {

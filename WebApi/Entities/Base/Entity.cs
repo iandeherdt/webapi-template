@@ -1,6 +1,6 @@
 using System;
 
-namespace WebApi.Entities
+namespace WebApiTemplate.Entities
 {
     public interface IEntity
     {

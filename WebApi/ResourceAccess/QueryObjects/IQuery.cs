@@ -1,6 +1,6 @@
-﻿using WebApi.ResourceAccess.Context;
+﻿using WebApiTemplate.ResourceAccess.Context;
 
-namespace WebApi.ResourceAccess.QueryObjects
+namespace WebApiTemplate.ResourceAccess.QueryObjects
 {
     public interface IQuery<T>
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Practices.Unity;
 
-namespace WebApi
+namespace WebApiTemplate
 {
     public class Factory
     {

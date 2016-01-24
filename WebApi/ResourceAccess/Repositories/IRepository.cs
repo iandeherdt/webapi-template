@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using WebApi.Entities;
-using WebApi.ResourceAccess.QueryObjects;
+using WebApiTemplate.Entities;
+using WebApiTemplate.ResourceAccess.QueryObjects;
 
-namespace WebApi.ResourceAccess.Repositories
+namespace WebApiTemplate.ResourceAccess.Repositories
 {
     public interface IRepository
     {

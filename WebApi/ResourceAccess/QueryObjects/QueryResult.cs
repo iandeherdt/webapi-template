@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace WebApi.ResourceAccess.QueryObjects
+namespace WebApiTemplate.ResourceAccess.QueryObjects
 {
     public interface IQueryResult<T>
     {

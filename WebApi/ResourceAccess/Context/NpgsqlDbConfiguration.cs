@@ -1,6 +1,6 @@
 using System.Data.Entity;
 
-namespace WebApi.ResourceAccess.Context
+namespace WebApiTemplate.ResourceAccess.Context
 {
     public class NpgsqlDbConfiguration : DbConfiguration
     {
