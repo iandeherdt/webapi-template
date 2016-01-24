@@ -20,6 +20,8 @@ namespace WebApiTemplate.ResourceAccess.Context{
             this.Configuration.LazyLoadingEnabled = false;
         }
 
+        public DbSet<Product> Products { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 
