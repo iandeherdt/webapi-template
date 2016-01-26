@@ -23,8 +23,9 @@ namespace WebApiTemplate.Controllers
         {
             using (UnitOfWork.Start())
             {
-                var products = _repository.GetAll<Product>();
-                return products.Select(Mapper.Map<ProductDto>);
+                var products = _repository.GetAll<Product>().ToList();
+                var productdtos = products.Select(Mapper.Map<ProductDto>);
+                return productdtos;
             }
         }
 

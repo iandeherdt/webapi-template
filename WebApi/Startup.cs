@@ -18,13 +18,14 @@ namespace WebApiTemplate
             HttpConfiguration config = new HttpConfiguration();
             ConfigureWebApi(app, config);
             ConfigureDependencyInjection(config);
+            ConfigureAutoMapper();
         }
 
         private void ConfigureWebApi(IAppBuilder app, HttpConfiguration config)
         {
             app.UseCors(CorsOptions.AllowAll);
             WebApiConfig.Register(config);
-            app.Use(config);
+            app.UseWebApi(config);
         }
 
         private void ConfigureDependencyInjection(HttpConfiguration config)
@@ -35,6 +36,11 @@ namespace WebApiTemplate
             Container.InitializeWith(container);
 
             config.DependencyResolver = new UnityDependencyResolver(container);
+        }
+
+        private void ConfigureAutoMapper()
+        {
+            AutoMapperConfig.Configure();
         }
     }
 }

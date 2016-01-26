@@ -2,57 +2,59 @@
 using System.Linq;
 using System.Net.Http;
 using FluentAssertions;
-using NUnit.Framework;
 using WebApiTemplate.Entities;
 using WebApiTemplate.IntegrationTests.Builders;
 using WebApiTemplate.Models;
 using WebApiTemplate.ResourceAccess.Uow;
+using Xunit;
 
 namespace WebApiTemplate.IntegrationTests
 {
     public class ActieServiceTests
     {
-        [Description("Demo for usage webapi template")]
-        public class When_getting_all_prodcuts : ServiceTest
+        public class When_getting_all_prodcuts : IClassFixture<ServiceTest>
         {
             private HttpResponseMessage _response;
             private IEnumerable<ProductDto> _result;
             private IEnumerable<Product> _given;
-            protected override void Given()
+            ServiceTest fixture;
+            public When_getting_all_prodcuts(ServiceTest serviceTest)
             {
+                this.fixture = serviceTest;
                 _given = ProductBuilder.ListOf(12);
                 using (var uow = UnitOfWork.Start())
                 {
-                    foreach (var actie in _given)
+                    foreach (var product in _given)
                     {
-                        Repository.Add(actie);
+                        this.fixture.Repository.Add(product);
                     }
                     uow.SaveChanges();
                 }
-            }
-
-            protected override void When()
-            {
-                var request = "/api/product";
-                _response = CreateGetRequest(request).Result;
+                using (UnitOfWork.Start())
+                {
+                    var result = this.fixture.Repository.GetAll<Product>().ToList();
+                }
+                
+                var request = "/product";
+                _response = this.fixture.CreateGetRequest(request).Result;
                 var json = _response.Content.ReadAsStringAsync().Result;
-                _result = DeserializeJsonWithRootObject<IEnumerable<ProductDto>>(json);
+                _result = this.fixture.DeserializeJson<IEnumerable<ProductDto>>(json);
             }
 
-            [Test]
+            [Fact]
             public void Then_the_response_should_be_OK()
             {
                 _response.IsSuccessStatusCode.Should().BeTrue();
             }
 
-            [Test]
+            [Fact]
             public void Then_the_count_should_be_12()
             {
                 _result.Count().ShouldBeEquivalentTo(12);
             }
 
 
-            [Test]
+            [Fact]
             public void Then_the_name_should_be_filled_in()
             {
                 foreach (var productDto in _result)
