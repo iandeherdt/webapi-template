@@ -30,11 +30,6 @@ namespace WebApiTemplate.IntegrationTests
                     }
                     uow.SaveChanges();
                 }
-                using (UnitOfWork.Start())
-                {
-                    var result = this.fixture.Repository.GetAll<Product>().ToList();
-                }
-                
                 var request = "/product";
                 _response = this.fixture.CreateGetRequest(request).Result;
                 var json = _response.Content.ReadAsStringAsync().Result;

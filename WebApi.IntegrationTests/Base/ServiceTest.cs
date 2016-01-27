@@ -22,7 +22,6 @@ namespace WebApiTemplate.IntegrationTests
     {
         private const string Authorization = "Authorization";
         private string _token = "";
-        readonly string _baseUrl = "url";
         protected TestServer Server { get; private set; }
 
         public ServiceTest()
@@ -36,6 +35,12 @@ namespace WebApiTemplate.IntegrationTests
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<EntityContext, Configuration>());
             Server.BaseAddress = new Uri("https://localhost/");
             Factory.RegisterInstance<IRequestState>(new PerThreadRequestState());
+            Given();
+        }
+
+        public void Given()
+        {
+
         }
 
         public void Dispose()
