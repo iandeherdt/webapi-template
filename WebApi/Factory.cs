@@ -1,4 +1,5 @@
 ﻿using Microsoft.Practices.Unity;
+using WebApiTemplate.ResourceAccess.Repositories;
 
 namespace WebApiTemplate
 {
@@ -18,6 +19,7 @@ namespace WebApiTemplate
         {
             // ToDo: registreer hier de nodige types op volgende manier (controllers moeten niet geregistreerd worden)
             container.RegisterType<IRequestState, PerHttpRequestState>();
+            container.RegisterType<IRepository, EntityFrameworkRepository>();
         }
     }
 }

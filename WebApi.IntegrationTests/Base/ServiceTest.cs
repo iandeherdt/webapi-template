@@ -9,30 +9,23 @@ using Microsoft.Owin.Testing;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
-using NUnit.Framework;
 using WebApiTemplate.ResourceAccess.Context;
 using WebApiTemplate.ResourceAccess.Migrations;
 using WebApiTemplate.ResourceAccess.Repositories;
 using WebApiTemplate.ResourceAccess.Uow;
+using Xunit;
 
 namespace WebApiTemplate.IntegrationTests
 {
-    public abstract class ServiceTest
+
+    public class ServiceTest : IDisposable
     {
         private const string Authorization = "Authorization";
         private string _token = "";
         readonly string _baseUrl = "url";
         protected TestServer Server { get; private set; }
 
-        protected virtual void PrepareTestData()
-        { }
-
-        protected abstract void Given();
-
-        protected abstract void When();
-
-        [OneTimeSetUp]
-        public void BeforeTest()
+        public ServiceTest()
         {
             //_token = GetToken(_baseUrl);
             Server = TestServer.Create(app =>
@@ -43,13 +36,9 @@ namespace WebApiTemplate.IntegrationTests
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<EntityContext, Configuration>());
             Server.BaseAddress = new Uri("https://localhost/");
             Factory.RegisterInstance<IRequestState>(new PerThreadRequestState());
-            PrepareTestData();
-            Given();
-            When();
         }
 
-        [OneTimeTearDown]
-        public void AfterTest()
+        public void Dispose()
         {
             using (var uow = UnitOfWork.Start())
             {
@@ -59,13 +48,13 @@ namespace WebApiTemplate.IntegrationTests
             Server.Dispose();
         }
 
-        protected Task<HttpResponseMessage> CreateGetRequest(string request)
+        public Task<HttpResponseMessage> CreateGetRequest(string request)
         {
 
             return Server.CreateRequest(request).AddHeader(Authorization, _token).GetAsync();
         }
 
-        protected Task<HttpResponseMessage> CreatePostRequest<T>(string request, T model)
+        public Task<HttpResponseMessage> CreatePostRequest<T>(string request, T model)
         {
             var rootFormatter = new JsonMediaTypeFormatter()
             {
@@ -81,7 +70,7 @@ namespace WebApiTemplate.IntegrationTests
                 .PostAsync();
         }
 
-        protected Task<HttpResponseMessage> CreatePutRequest<T>(string request, T model)
+        public Task<HttpResponseMessage> CreatePutRequest<T>(string request, T model)
         {
             var rootFormatter = new JsonMediaTypeFormatter
             {
@@ -97,7 +86,7 @@ namespace WebApiTemplate.IntegrationTests
                 .SendAsync("PUT");
         }
 
-        protected Task<HttpResponseMessage> CreatePatchRequest<T>(string request, T model)
+        public Task<HttpResponseMessage> CreatePatchRequest<T>(string request, T model)
         {
             var rootFormatter = new JsonMediaTypeFormatter 
             {
@@ -113,20 +102,19 @@ namespace WebApiTemplate.IntegrationTests
                 .SendAsync("PATCH");
         }
 
-        protected Task<HttpResponseMessage> CreateDeleteRequest(string request, int id)
+        public Task<HttpResponseMessage> CreateDeleteRequest(string request, int id)
         {
             return Server.CreateRequest(request).AddHeader(Authorization, _token)
                 .And(x => x.Method = HttpMethod.Delete)
                 .SendAsync("DELETE");
         }
 
-        protected T DeserializeJsonWithRootObject<T>(string json)
+        public T DeserializeJson<T>(string json)
         {
-            var jsonWithoutRoot = JObject.Parse(json).First.First.ToString();
-            return JsonConvert.DeserializeObject<T>(jsonWithoutRoot);
+            return JsonConvert.DeserializeObject<T>(json);
         }
 
-        protected IRepository Repository { get { return Container.Resolve<IRepository>(); } }
+        public IRepository Repository { get { return Container.Resolve<IRepository>(); } }
 
         #region Authentication
 
@@ -164,7 +152,7 @@ namespace WebApiTemplate.IntegrationTests
                 }
                 else
                 {
-                    Assert.Fail(result.StatusCode.ToString());
+                    Assert.True(false, result.StatusCode.ToString());
                 }
             }
             return null;
